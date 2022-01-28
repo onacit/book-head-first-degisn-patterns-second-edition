@@ -7,6 +7,7 @@ import lombok.Setter;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 class WeatherData
         implements Subject {
@@ -26,7 +27,11 @@ class WeatherData
     @Override
     public void notifyObservers() {
         for (final Observer observer : observers) {
-            observer.update(temperature, humidity, pressure);
+            if (ThreadLocalRandom.current().nextBoolean()) {
+                observer.update(temperature, humidity, pressure);
+            } else {
+                observer.update();
+            }
         }
     }
 

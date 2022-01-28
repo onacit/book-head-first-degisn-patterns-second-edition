@@ -2,16 +2,14 @@ package com.github.onacit.book.hfdpse.weatherstation;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Objects;
-
 @Slf4j
 class CurrentConditionsDisplay
-        implements Observer, DisplayElement {
+        extends AbstractObserver
+        implements DisplayElement {
 
     CurrentConditionsDisplay(final WeatherData weatherData) {
-        super();
-        this.weatherData = Objects.requireNonNull(weatherData, "weatherData is null");
-        this.weatherData.registerObserver(this);
+        super(weatherData);
+        weatherData.registerObserver(this);
     }
 
     @Override
@@ -25,8 +23,6 @@ class CurrentConditionsDisplay
     public void display() {
         log.debug("Current conditions: {}F decrees and {}% humidity", temperature, humidity);
     }
-
-    private final WeatherData weatherData;
 
     private float temperature;
 

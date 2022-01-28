@@ -11,7 +11,11 @@ class ForecastConditionsDisplay
     ForecastConditionsDisplay(final WeatherData weatherData) {
         super();
         this.weatherData = Objects.requireNonNull(weatherData, "weatherData is null");
-        this.weatherData.registerObserver(this);
+    }
+
+    @Override
+    public void update() {
+        update(weatherData.getTemperature(), weatherData.getHumidity(), weatherData.getPressure());
     }
 
     @Override
