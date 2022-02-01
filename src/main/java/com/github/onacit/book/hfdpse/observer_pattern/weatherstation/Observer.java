@@ -1,8 +1,6 @@
-package com.github.onacit.book.hfdpse.weatherstation;
+package com.github.onacit.book.hfdpse.observer_pattern.weatherstation;
 
 interface Observer {
-
-    void update();
 
     void update(float temp, float humidity, float pressure);
 }

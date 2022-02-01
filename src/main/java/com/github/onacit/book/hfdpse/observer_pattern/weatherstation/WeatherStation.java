@@ -1,4 +1,4 @@
-package com.github.onacit.book.hfdpse.weatherstation;
+package com.github.onacit.book.hfdpse.observer_pattern.weatherstation;
 
 class WeatherStation {
 
